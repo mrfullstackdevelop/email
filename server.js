@@ -6,7 +6,7 @@ const nodemailer = require("nodemailer")
 app.use(bodyParser.json())
 
 app.post("/send", async (req, res) => {
-        const { email, from, subject, content, dkim, domain, selector } = req.body
+        const { email, from, subject, html, text, dkim, domain, selector } = req.body
         nodemailer.createTransport({
             sendmail: true,
             newline: "unix",
@@ -16,7 +16,8 @@ app.post("/send", async (req, res) => {
             from: from,
             to: email,
             subject: subject,
-            html: content,
+            html: html,
+            text: text,
             dkim: {
                 domainName: domain,
                 keySelector: selector.trim(),
