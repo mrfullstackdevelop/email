@@ -12,7 +12,6 @@ app.post("/send", async (req, res) => {
             newline: "unix",
             path: "/usr/sbin/sendmail"
         }).sendMail({
-            priority: "high",
             encoding: "base64",
             from: from,
             to: email,
